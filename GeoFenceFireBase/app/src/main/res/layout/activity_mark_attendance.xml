@@ -1,0 +1,197 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:id="@+id/linearLayout0"
+        android:layout_marginTop="50dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Mark Attendence"
+            android:textSize="40sp"
+            android:gravity="center"
+            android:id="@+id/Heading"
+            />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:id="@+id/linearLayout1"
+        android:layout_below="@+id/linearLayout0"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Group Name: "
+            android:textSize="16sp"/>
+        <EditText
+            android:layout_width="150dp"
+            android:layout_height="36dp"
+            android:layout_margin="10sp"
+            android:padding="10dp"
+            android:id="@+id/ETgroupName"
+            android:width="20sp"
+            android:inputType="text"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:id="@+id/linearLayout3"
+        android:weightSum="1"
+        android:layout_below="@+id/linearLayout1"
+        android:layout_alignRight="@+id/linearLayout1"
+        android:layout_alignEnd="@+id/linearLayout4">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Title: "
+            android:textSize="16sp" />
+
+        <EditText
+            android:layout_width="150dp"
+            android:layout_height="36dp"
+            android:layout_margin="10sp"
+            android:padding="10dp"
+            android:id="@+id/ETtitle"
+            android:width="20sp"
+            android:layout_weight="3.60"
+            android:inputType="text" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:id="@+id/linearLayout4"
+        android:weightSum="1"
+        android:layout_below="@+id/linearLayout3"
+        android:layout_alignRight="@+id/linearLayout1"
+        android:layout_alignEnd="@+id/linearLayout4">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Message: "
+            android:textSize="16sp" />
+
+        <EditText
+            android:layout_width="150dp"
+            android:layout_height="36dp"
+            android:layout_margin="10sp"
+            android:padding="10dp"
+            android:id="@+id/ETmessage"
+            android:width="20sp"
+            android:layout_weight="3.60"
+            android:inputType="text" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:id="@+id/linearLayout5"
+        android:layout_below="@+id/linearLayout4"
+        android:layout_alignRight="@+id/linearLayout1"
+        android:layout_alignEnd="@+id/linearLayout1">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="lan: "
+            android:textSize="16sp" />
+
+        <EditText
+            android:layout_width="150dp"
+            android:layout_height="36dp"
+            android:layout_margin="10sp"
+            android:padding="10dp"
+            android:id="@+id/lan"
+            android:width="20sp"
+            android:inputType="numberDecimal"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:id="@+id/linearLayout6"
+        android:layout_below="@+id/linearLayout5"
+        android:layout_alignRight="@+id/linearLayout1"
+        android:layout_alignEnd="@+id/linearLayout1">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="lon: "
+            android:textSize="16sp" />
+
+        <EditText
+            android:layout_width="150dp"
+            android:layout_height="36dp"
+            android:layout_margin="10sp"
+            android:padding="10dp"
+            android:id="@+id/lon"
+            android:width="20sp"
+            android:inputType="numberDecimal"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:id="@+id/linearLayout7"
+        android:layout_below="@+id/linearLayout6"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="33dp">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Mark In"
+            android:textSize="26sp"
+            android:onClick="markAttendenceIn"
+            android:gravity="center"
+            android:layout_gravity="center"
+            />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Mark Out"
+            android:textSize="26sp"
+            android:onClick="markAttendenceOut"
+            android:gravity="center"
+            android:layout_gravity="center"
+            />
+    </LinearLayout>
+
+
+
+
+</RelativeLayout>
