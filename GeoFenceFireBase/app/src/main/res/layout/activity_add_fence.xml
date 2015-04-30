@@ -9,7 +9,7 @@
         android:orientation="horizontal"
         android:gravity="center"
         android:id="@+id/linearLayout0"
-        android:layout_marginTop="50dp"
+        android:padding="10dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true">
@@ -18,10 +18,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="INSERT DATA"
-            android:textSize="40sp"
+            android:textSize="20sp"
             android:gravity="center"
-            android:id="@+id/Heading"
-            />
+            android:id="@+id/Heading"/>
 
     </LinearLayout>
 
@@ -42,7 +41,7 @@
             android:text="Group Name: "
             android:textSize="16sp"/>
         <EditText
-            android:layout_width="150dp"
+            android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:layout_margin="10sp"
             android:padding="10dp"

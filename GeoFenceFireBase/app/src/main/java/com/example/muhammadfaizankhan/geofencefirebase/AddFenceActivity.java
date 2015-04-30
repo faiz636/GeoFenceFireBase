@@ -26,11 +26,14 @@ public class AddFenceActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_fence);
+
+        //getting user name passed to this activity
         mUser= getIntent().getStringExtra(AddFenceActivity.USER_KEY);
+        //getting group-location-defined address passed to this activity
         mGroupLocationDefinedAddress= getIntent().getStringExtra(AddFenceActivity.USER_GROUP_LOCATION_DEFINED_KEY);
     }
 
-
+    //onclick listener of button. this method read data form fields and add fence to firebase
     public void addFence(View view) {
 
         String ofGroup;
@@ -38,6 +41,7 @@ public class AddFenceActivity extends ActionBarActivity {
         String title;
         int radius;
 
+        //reading and checking data correctness if incorrrect data is entered exception is created
         try {
             ofGroup = ((EditText) findViewById(R.id.ETgroupName)).getText().toString();
             if (ofGroup.startsWith(" ") || ofGroup.length() == 0)
@@ -50,14 +54,16 @@ public class AddFenceActivity extends ActionBarActivity {
             radius = Integer.parseInt(((EditText) findViewById(R.id.ETradius)).getText().toString());
             if(radius<1)
                 throw new IllegalArgumentException("Wrong Data in Radius Field");
-
-        } catch (IllegalArgumentException exobj) {
+        }
+        //handling exceptions thrown in try block
+        catch (IllegalArgumentException exobj) {
             Toast.makeText(this, exobj.getMessage(), Toast.LENGTH_SHORT).show();
             return;
         }
 
-
-    Firebase groupLocationDefinedRef = new Firebase(mGroupLocationDefinedAddress);
+        //making refference object to firebase group-location-defined to add fence location object
+        Firebase groupLocationDefinedRef = new Firebase(mGroupLocationDefinedAddress);
+        //setting location object at firebase
         groupLocationDefinedRef.child(ofGroup).push().setValue(new GroupLocation(mUser,ofGroup,title,mType,mLatitude,mLongitude,radius, new GregorianCalendar()).getMapObject());
 
     }

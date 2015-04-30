@@ -26,7 +26,7 @@ group-check-in-records : {
                     lat : 24.8133877
                     lon : 67.0454256
                 },
-                identified-location-id : hehe867kd // from locations-defined, it will not be present if cannot identify the location i.e. “Other Location”,
+                identified-location-id : hehe867kd // from mGroupLocations-defined, it will not be present if cannot identify the location i.e. “Other Location”,
                 // it will always be present in beacon based automatic check in and out
             }
         }
@@ -35,8 +35,11 @@ group-check-in-records : {
 */
 public class MarkAttendanceFireBase {
 
-    static int SOURCE_DEVICE_WEB = 1, SOURCE_DEVICE_IPHONE = 2, SOURCE_DEVICE_ANDROID = 3,
-            SOURCE_TYPE_MANUAL = 1, SOURCE_TYPE_GEOFENCING = 2,
+    static int SOURCE_DEVICE_WEB = 1,
+            SOURCE_DEVICE_IPHONE = 2,
+            SOURCE_DEVICE_ANDROID = 3,
+            SOURCE_TYPE_MANUAL = 1,
+            SOURCE_TYPE_GEOFENCING = 2,
             TYPE_IN = 1, TYPE_OUT = 2;
 
 
@@ -44,8 +47,8 @@ public class MarkAttendanceFireBase {
             mSourceType;    //1 = manual in web or mobile, 2 = automatic by geo-fencing in mobile,
 
     String mUser,//user name
-            mGroupCheckinRecords = "https://test-employeeconnect.firebaseio.com/group-check-in-records",
-            mGroupCheckinCurrent = "https://test-employeeconnect.firebaseio.com/group-check-in-current";
+            mGroupCheckInRecords = "https://test-employeeconnect.firebaseio.com/group-check-in-records",
+            mGroupCheckInCurrent = "https://test-employeeconnect.firebaseio.com/group-check-in-current";
 
     public MarkAttendanceFireBase(String userName,
                                   int sourceDeviceType,
@@ -78,14 +81,14 @@ public class MarkAttendanceFireBase {
 
         map.put("location", location);
 
-        Firebase groupCheckInRecordsRef = new Firebase(mGroupCheckinRecords);
+        Firebase groupCheckInRecordsRef = new Firebase(mGroupCheckInRecords);
 
         groupCheckInRecordsRef = groupCheckInRecordsRef.child(groupName).child(mUser).push();
         groupCheckInRecordsRef.setValue(map);
 
         map.put("id", groupCheckInRecordsRef.getKey());
 
-        Firebase groupCheckinCurrentRef = new Firebase(mGroupCheckinCurrent);
+        Firebase groupCheckinCurrentRef = new Firebase(mGroupCheckInCurrent);
         groupCheckinCurrentRef.child(groupName).child(mUser).setValue(map);
 
     }

@@ -13,11 +13,13 @@ import java.util.Map;
 public class GroupLocation {
 
 
-    String mDefinedBy, mTeamURL, mTitle;
+    String mDefinedBy,//name of user who define the location
+            mTeamURL, //contain group name of location
+            mTitle;     //name of location
     int mType;
     GregorianCalendar mTimestamp;
-    int mRadius;
-    Location mLocation;
+    int mRadius;//radius of fence
+    Location mLocation;//location object which contain latitude and longitude
 
     public GroupLocation(String definedBy, String teamURL, String title, int type,
                          double latitude, double longitude, int radius, GregorianCalendar timestamp) {
@@ -33,6 +35,7 @@ public class GroupLocation {
         this.mLocation.setLongitude(longitude);
     }
 
+    //this constructor is passed complete map object obtained form firebase for each location
     public GroupLocation(Map<String,Object> map){
 
         this.mDefinedBy = (String)map.get("defined-by");
@@ -56,6 +59,7 @@ public class GroupLocation {
 
     }
 
+    //this method returns map object according to firebase location structure
     public Map<String,Object> getMapObject(){
 
         Map<String,Object> map= new HashMap<String,Object>();

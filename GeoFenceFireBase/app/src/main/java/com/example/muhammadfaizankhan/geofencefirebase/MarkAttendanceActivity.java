@@ -11,7 +11,9 @@ import android.widget.Toast;
 
 public class MarkAttendanceActivity extends ActionBarActivity {
 
-    static String USER_KEY="user";
+    static String USER_KEY="user";//key to receive user name form intent
+
+    //MarkAttendanceFireBase class marks attendence.
     MarkAttendanceFireBase mMarkAttendenceFirebase;
 
     @Override
@@ -19,16 +21,17 @@ public class MarkAttendanceActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mark_attendance);
 
-        String user = "shezi1";///todo:get user form intent
-        user= getIntent().getStringExtra(AddFenceActivity.USER_KEY);
+        String user= getIntent().getStringExtra(AddFenceActivity.USER_KEY);
 
         //todo:get group from intent and poppulate droup down list
 
+        //making object and setting certain values
         mMarkAttendenceFirebase = new MarkAttendanceFireBase(user,
                 MarkAttendanceFireBase.SOURCE_DEVICE_ANDROID,MarkAttendanceFireBase.SOURCE_TYPE_GEOFENCING);
 
     }
 
+    //onclick listener to mark attendence for entrance
     public void markAttendenceIn(View view){
 
         String ofGroup, title, message;
@@ -63,6 +66,7 @@ public class MarkAttendanceActivity extends ActionBarActivity {
     }
 
 
+    //onclick listener to mark attendance for exit
     public void markAttendenceOut(View view){
 
         String ofGroup, title, message;
@@ -95,4 +99,5 @@ public class MarkAttendanceActivity extends ActionBarActivity {
             Toast.makeText(this, exobj.getMessage(), Toast.LENGTH_SHORT).show();
         }
     }
+
 }
