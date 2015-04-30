@@ -4,6 +4,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -19,15 +20,16 @@ public class MarkAttendanceActivity extends ActionBarActivity {
         setContentView(R.layout.activity_mark_attendance);
 
         String user = "shezi1";///todo:get user form intent
+        user= getIntent().getStringExtra(AddFenceActivity.USER_KEY);
+
         //todo:get group from intent and poppulate droup down list
 
         mMarkAttendenceFirebase = new MarkAttendanceFireBase(user,
                 MarkAttendanceFireBase.SOURCE_DEVICE_ANDROID,MarkAttendanceFireBase.SOURCE_TYPE_GEOFENCING);
 
-
     }
 
-    void markAttendenceIn(){
+    public void markAttendenceIn(View view){
 
         String ofGroup, title, message;
         int lon,lat;
@@ -61,7 +63,7 @@ public class MarkAttendanceActivity extends ActionBarActivity {
     }
 
 
-    void markAttendenceOut(){
+    public void markAttendenceOut(View view){
 
         String ofGroup, title, message;
         int lon,lat;
