@@ -11,6 +11,7 @@ import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -29,7 +30,7 @@ public class MainActivity extends Activity {
     List<GroupLocation> mGroupLocations;//contain locations of user groups
 
     //refference address to location defined
-    String mGroupLocationDefinedAddress = "https://test-employeeconnect.firebaseio.com/group-mGroupLocations-defined";
+    String mGroupLocationDefinedAddress = "https://test-employeeconnect.firebaseio.com/group-locations-defined";
     String mUserGroupMembershipAddress = "https://test-employeeconnect.firebaseio.com/user-group-memberships";
 
     @Override
@@ -133,9 +134,11 @@ public class MainActivity extends Activity {
 
     //onclick listener of button to start add new fence activity
     public void startAddFenceActivity(View view) {
-        //todo:send user groups
-        startActivity(new Intent(this, AddFenceActivity.class).putExtra(AddFenceActivity.USER_KEY,mUser)
-                .putExtra(AddFenceActivity.USER_GROUP_LOCATION_DEFINED_KEY, mGroupLocationDefinedAddress));
+
+        Log.i("startAddFenceActivity",mUserGroups.size()+"");
+        startActivity(new Intent(this, AddFenceActivity.class).putExtra(AddFenceActivity.USER_KEY, mUser)
+                .putExtra(AddFenceActivity.USER_GROUP_LOCATION_DEFINED_KEY, mGroupLocationDefinedAddress)
+                .putExtra(AddFenceActivity.USER_GROUP, (Serializable) mUserGroups));
     }
 
     //onclick listener of button to start mark attendence activity
