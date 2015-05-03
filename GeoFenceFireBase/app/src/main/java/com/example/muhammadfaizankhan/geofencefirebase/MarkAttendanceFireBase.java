@@ -35,7 +35,7 @@ group-check-in-records : {
 */
 public class MarkAttendanceFireBase {
 
-    static int SOURCE_DEVICE_WEB = 1,
+    final static int SOURCE_DEVICE_WEB = 1,
             SOURCE_DEVICE_IPHONE = 2,
             SOURCE_DEVICE_ANDROID = 3,
             SOURCE_TYPE_MANUAL = 1,

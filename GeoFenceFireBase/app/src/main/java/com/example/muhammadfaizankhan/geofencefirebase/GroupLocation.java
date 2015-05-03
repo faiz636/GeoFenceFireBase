@@ -13,6 +13,8 @@ import java.util.Map;
 public class GroupLocation {
 
 
+    final static int TYPE=1;
+
     String mDefinedBy,//name of user who define the location
             mTeamURL, //contain group name of location
             mTitle;     //name of location

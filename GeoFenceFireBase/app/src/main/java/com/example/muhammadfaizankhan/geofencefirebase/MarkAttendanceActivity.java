@@ -11,7 +11,7 @@ import android.widget.Toast;
 
 public class MarkAttendanceActivity extends ActionBarActivity {
 
-    static String USER_KEY="user";//key to receive user name form intent
+    final static String USER_KEY="user";//key to receive user name form intent
 
     //MarkAttendanceFireBase class marks attendence.
     MarkAttendanceFireBase mMarkAttendenceFirebase;
@@ -27,7 +27,8 @@ public class MarkAttendanceActivity extends ActionBarActivity {
 
         //making object and setting certain values
         mMarkAttendenceFirebase = new MarkAttendanceFireBase(user,
-                MarkAttendanceFireBase.SOURCE_DEVICE_ANDROID,MarkAttendanceFireBase.SOURCE_TYPE_GEOFENCING);
+                MarkAttendanceFireBase.SOURCE_DEVICE_ANDROID,
+                MarkAttendanceFireBase.SOURCE_TYPE_GEOFENCING);
 
     }
 

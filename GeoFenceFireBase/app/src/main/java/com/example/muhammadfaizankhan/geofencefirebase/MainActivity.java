@@ -20,7 +20,7 @@ import java.util.Map;
 
 public class MainActivity extends Activity {
 
-    static String USER_KEY = "user";
+    final static String USER_KEY = "user";
 
     //user logged-in
     String mUser = "shezi1";
@@ -29,9 +29,14 @@ public class MainActivity extends Activity {
     List<String> mUserGroups;//contain names of user groups
     List<GroupLocation> mGroupLocations;//contain locations of user groups
 
-    //refference address to location defined
-    String mGroupLocationDefinedAddress = "https://test-employeeconnect.firebaseio.com/group-locations-defined";
-    String mUserGroupMembershipAddress = "https://test-employeeconnect.firebaseio.com/user-group-memberships";
+    //firebase url of main application
+    String mFirebaseUrl = "https://test-employeeconnect.firebaseio.com";
+
+    //firebase url to location defined
+    String mGroupLocationDefinedAddressUrl = mFirebaseUrl + "/group-locations-defined";
+
+    //firebase url to user group relationship metadata
+    String mUserGroupMembershipAddressUrl = mFirebaseUrl + "/user-group-memberships";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +47,7 @@ public class MainActivity extends Activity {
         Firebase.setAndroidContext(this);
 
         //making firebase refferenc to user-group-membership
-        String userGroupAddress = mUserGroupMembershipAddress +"/"+mUser;
+        String userGroupAddress = mUserGroupMembershipAddressUrl +"/"+mUser;
 
         //contain names of user groups
         mUserGroups=new ArrayList<String>();
@@ -66,7 +71,7 @@ public class MainActivity extends Activity {
                 mUserGroups.add(groupName);
 
                 //refferencing to group location at firebase of group
-                String groupLocation = mGroupLocationDefinedAddress + "/" + groupName;
+                String groupLocation = mGroupLocationDefinedAddressUrl + "/" + groupName;
 //                Log.i("userGroupRef",groupName);
 
                 //making firebase refference object to add listener
@@ -136,8 +141,12 @@ public class MainActivity extends Activity {
     public void startAddFenceActivity(View view) {
 
         Log.i("startAddFenceActivity",mUserGroups.size()+"");
-        startActivity(new Intent(this, AddFenceActivity.class).putExtra(AddFenceActivity.USER_KEY, mUser)
-                .putExtra(AddFenceActivity.USER_GROUP_LOCATION_DEFINED_KEY, mGroupLocationDefinedAddress)
+        startActivity(new Intent(this, AddFenceActivity.class)  //creating intent object to call AddFenceActivity
+                //setting extra values to intent
+                .putExtra(AddFenceActivity.USER_KEY, mUser)     //setting user name
+                //setting mGroupLocationDefinedAddressUrl which is url at firebase
+                .putExtra(AddFenceActivity.USER_GROUP_LOCATION_DEFINED_URL_KEY, mGroupLocationDefinedAddressUrl)
+                //setting user group names to which fence will be added
                 .putExtra(AddFenceActivity.USER_GROUP, (Serializable) mUserGroups));
     }
 
